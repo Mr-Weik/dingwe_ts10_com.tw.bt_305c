@@ -7,4 +7,4 @@
   2. 装载 magisk
   3. 装载 LSPosed
   4. 装载 CorePatch
-** 具体步骤详见： 安装步骤.md **
+# 具体步骤详见： 安装步骤.md 
