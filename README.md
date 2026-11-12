@@ -10,7 +10,10 @@
 4. 装载 CorePatch
 # sofaware.zip
 > 鼎微boot: a2191928-8a14-11ec-abc8-13ee0a7bad29
+> 
 > corapath: corepath.apk
+>
 > LSPosed: LSPosed-v1.9.3_mod-7244-zygisk-release.zip
+>
 > magisk: magisk 28.1.apk
 # 具体步骤详见： 安装步骤.txt
