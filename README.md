@@ -1,20 +1,32 @@
-# 鼎微ts10 蓝牙逻辑修改
-### 若已有root环境，直接magisk直接安装TWBT_Fix.zip即可
-> 目的:解决不熄火下车回车后蓝牙不主动广播,zlink(carplay)无法主动链接的情况
-> 
-> 猜测应该多版本固件通用,底层模块应该很少改动(只是个人猜测哈) 
-+ 固件包: [TS10.2.2_20250716.133557_WINDOW-AUTOUI]([url](https://pan.baidu.com/s/1vzoGIxURWcpfoH_0zROxeg?pwd=54zk#list/path=%2Fsharelink1100989873669-724837915412430%2F%E9%BC%8E%E5%BE%AE%E5%85%AC%E7%89%88%2FToparea-%E5%85%AC%E7%89%88%E8%BD%AF%E4%BB%B6%2FTS10%2F%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%2FTS10.2.2%2F%E6%A8%AA%E5%B1%8F%2F%E5%85%AC%E7%89%88+%E5%85%A8%E5%88%86%E8%BE%A8%E7%8E%87+%E6%94%AF%E6%8C%81OTA%2F%E5%9B%BD%E5%86%85&vmode=list&parentPath=%2Fsharelink1100989873669-724837915412430))
-# 环境要求
-1. 已root
-2. 装载 magisk
-3. 装载 LSPosed
-4. 装载 CorePatch
-# sofaware.zip
-> 鼎微boot: a2191928-8a14-11ec-abc8-13ee0a7bad29
-> 
-> corapath: corepath.apk
->
-> LSPosed: LSPosed-v1.9.3_mod-7244-zygisk-release.zip
->
-> magisk: magisk 28.1.apk
-# 具体步骤详见： 安装步骤.txt
+一、 准备工作
+
+在开始之前，你需要确保设备已经具备以下基础环境：
+1. 已获取 Root 权限：车机上已经刷入或安装了 Magisk（面具），并且能正常授权。
+2. 安装 LSPosed 框架：CorePatch 是基于 Xposed 架构的模块，必须依赖 LSPosed 运行。
+	• 下载 LSPosed（建议选择 Zygisk 版本）的 .zip 安装包。
+	• 打开 Magisk -> 开启右上角设置中的 Zygisk -> 重启车机。
+	• 重启后，打开 Magisk -> 模块 -> 从本地安装 -> 选择 LSPosed 压缩包 -> 刷入后再次重启。
+3. 下载 CorePatch 模块：前往 GitHub 搜索并下载 CorePatch（核心破解）的 .apk 安装包（注意选择对应你车机 Android 版本的版本）。
+
+
+二、 配置 CorePatch 绕过签名验证
+
+安装完 LSPosed 和 CorePatch 后，需要进行配置以允许运行修改过的应用：
+1. 安装并激活模块：
+	• 在车机上正常安装下载好的 CorePatch.apk。
+	• 打开桌面上的 LSPosed 管理器（如果没有桌面图标，可通过拨号盘输入 *#*#5776733#*#* 或在通知栏下拉菜单进入）。
+	• 点击底部的 模块 -> 找到并点击 CorePatch -> 开启 启用模块 开关（默认会自动勾选“系统框架”，保持默认即可）。
+2. 配置破解选项：
+	• 打开桌面的 CorePatch 应用（或从 LSPosed 模块设置中进入）。
+	• 勾选以下核心选项：
+		• 允许降级安装（如果修改后的版本号低于原版需要勾选）。
+		• 禁用签名验证（核心选项，必选）。
+		• 禁用 APK 签名验证 / 允许使用不同的签名覆盖安装（核心选项，必选）。
+3. 重启生效：配置完成后，重启一次车机，使 CorePatch 正式接管系统的包管理服务。
+
+三、 安装TWBT_Fix.zip文件
+
+1. 将TWBT_Fix.zip文件放至U盘或者adb推送至sdcard中
+2. 使用Magisk 挂载TWBT_Fix.zip文件，使程序生效并重启
+3. 开机后检查Magisk中程序是否正常加载并检查桌面蓝牙图标是否正常存在
+4. ⚠ 若程序已正常加载但蓝牙图标未出现，则前置一、二步骤存在问题，请自行解决
